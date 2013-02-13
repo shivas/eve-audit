@@ -1,0 +1,33 @@
+.acResults {
+	padding: 0px;
+	border: 1px solid WindowFrame;
+	background-color: Window;
+	overflow: hidden;
+}
+
+.acResults ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-position: outside;
+	list-style: none;	
+}
+
+.acResults ul li {
+	margin: 0px;
+	padding: 2px 5px;
+	cursor: pointer;
+	display: block;
+	font: menu;
+	font-size: 1.4em;
+	line-height: 1.7em;
+	overflow: hidden;
+}
+
+.acLoading {
+	background : url('/static/img/indicator.gif') right center no-repeat;
+}
+
+.acSelect {
+	background-color: Highlight;
+	color: HighlightText;
+}

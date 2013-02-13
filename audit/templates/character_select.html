@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Character Select{% endblock %}
+{% block content %}
+{% from "_formhelpers.html" import render_field %}
+<h2>Character Select</h2>
+{% if chars|length < 3 %}
+<p><strong>Less than 3 characters, possibly an incomplete API key</strong></p>
+{% endif %}
+<table>
+<tr>
+{% for char in chars %}
+  <td align="center" valign="top">
+    <img src="http://image.eveonline.com/Character/{{ char.id }}_256.jpg" alt="{{ char.name }}" />
+    <p>
+      <form method="POST" action="{{ url_for('character_select') }}" id="{{ char.id }}">
+      <input type="hidden" name="char_id" value="{{ char.id }}" />
+      <button formid="{{ char.id }}"" type="submit" />{{ char.name }}</button>
+      </form>
+    </p>
+    <p>{{ char.corporation.name }} [{{ char.corporation.ticker }}]</p>
+    {% if char.alliance %}<p>{{ char.alliance.name }} [{{ char.alliance.ticker }}]</p>{% endif %}
+  </td>
+{% endfor %}
+</tr>
+</table>
+{% endblock %}

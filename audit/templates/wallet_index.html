@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Wallet{% endblock %}
+{% block content %}
+<p><h2>Wallet</h2></p>
+<p><h3>{{ char.name }}</h3></p>
+<p><strong>{{ char.wallet|length }}</strong> transactions</p>
+<table>
+<thead>
+<tr>
+  <th>Date/Time</th>
+  <th>Type</th>
+  <th>Amount</th>
+  <th>Balance</th>
+  <th>Paid To</th>
+  <th>Reason</th>
+</tr>
+</thead>
+{% for w in char.wallet %}
+<tbody>
+<tr>
+  <td>{{ w.timestamp }}</td>
+  <td>{{ w.reftype }}</td>
+  <td class="{% if w.party_1.name != char.name %}outgoing{% else %}incoming{% endif %}">{{ w.amount }}</td>
+  <td>{{ w.balance }}</td>
+  <td>{{ w.party_2.name }}</td>
+  <td>{{ w.reason }}</td>
+</tr>
+</tbody>
+{% endfor %}
+</table>
+{% endblock %}

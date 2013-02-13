@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Mail{% endblock %}
+{% block content %}
+<script type="text/javascript">
+<!--
+    function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+//-->
+</script>
+<p><h2>Mail</h2></p>
+<p><h3>{{ char.name }}</h3></p>
+<p><strong>{{ char.messages|length }}</strong> mails</p>
+<table>
+<thead>
+<tr>
+  <th>Date/Time</th>
+  <th>From</th>
+  <th>To</th>
+  <th>Subject</th>
+</tr>
+</thead>
+{% for m in char.messages %}
+<tbody>
+<tr>
+  <td width="10%">{{ m.timestamp }}</td>
+  <td>{{ m.from }}</td>
+  <td>{% for name in m.to %}{{ name }}, {% endfor %}</td>
+  <td width="50%"><a href="#" onclick="toggle_visibility('{{ m.id }}');">{{ m.title }}</a><div id="{{ m.id }}" style="display: none;"><p>{{ m.body|safe }}</p></div></td>
+</tr>
+</tbody>
+{% endfor %}
+</table>
+{% endblock %}

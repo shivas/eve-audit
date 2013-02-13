@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+{% block title %}Character Sheet{% endblock %}
+{% block content %}
+{% from "_formhelpers.html" import render_field %}
+<p><h2>Character Sheet</h2></p>
+<table>
+<tr>
+  <td width="140">
+    <img src="http://image.eveonline.com/Character/{{ char.id }}_256.jpg" alt="{{ char.name }}" width="128" height="128" />
+  </td>
+  <td>
+    <h3>{{ char.name }}</h3>
+    <p>
+      {{ char.corporation.name }} [{{ char.corporation.ticker }}]
+      <br />
+      {{ char.alliance.name }} [{{ char.alliance.ticker }}]
+    </p>
+    <p>Balance: {{ char.balance }} ISK</p>
+    <p>
+      SP: {{ char.skillpoints }} SP in {{ char.number_of_skills }} skills
+    </p>
+  </td>
+</tr>
+</table>
+<p><a href="http://eve-search.com/search/author/{{ char.name }}/forum/734105" target="_blank">Search character sale forums for this character</a></p>
+<table>
+<tr>
+  <td valign="top">
+    <h3>Racial</h3>
+    <table>
+    {% for skill in char.frigates %}
+    <tr>
+      <td>{{ skill.name }}</td>
+      <td width="10" class="l{{ skill.level }}">{{ skill.level }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <table>
+    {% for skill in char.cruisers %}
+    <tr>
+      <td>{{ skill.name }}</td>
+      <td width="10" class="l{{ skill.level }}">{{ skill.level }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <table>
+    {% for skill in char.battleships %}
+    <tr>
+      <td>{{ skill.name }}</td>
+      <td width="10" class="l{{ skill.level }}">{{ skill.level }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <h3>Drones</h3>
+    <table>
+    <tr>
+      <td>T2 Light Drones</td>
+      <td width="10" class="l{% if char.t2_lights %}5{% else %}1{% endif %}">{% if char.t2_lights %}&#x2713;{% else %}&#x2717;{% endif %}</td>
+    </tr>
+    <tr>
+      <td>T2 Heavies</td>
+      <td width="10" class="l{% if char.t2_heavies %}5{% else %}1{% endif %}">{% if char.t2_heavies %}&#x2713;{% else %}&#x2717;{% endif %}</td>
+    </tr>
+    <tr>
+      <td>T2 Sentries</td>
+      <td width="10" class="l{% if char.t2_sentries %}5{% else %}1{% endif %}">{% if char.t2_sentries %}&#x2713;{% else %}&#x2717;{% endif %}</td>
+    </tr>
+    <tr>
+      <td>T2 Repair Drones</td>
+      <td width="10" class="l{% if char.t2_repair_drones %}5{% else %}1{% endif %}">{% if char.t2_repair_drones %}&#x2713;{% else %}&#x2717;{% endif %}</td>
+    </tr>
+    <tr>
+      <td>Fighters</td>
+      <td width="10" class="l{% if char.fighters %}5{% else %}1{% endif %}">{% if char.fighters %}&#x2713;{% else %}&#x2717;{% endif %}</td>
+    </tr>
+    <tr>
+      <td>Fighter Bombers</td>
+      <td width="10" class="l{% if char.fighter_bombers %}5{% else %}1{% endif %}">{% if char.fighter_bombers %}&#x2713;{% else %}&#x2717;{% endif %}</td>
+    </tr>
+    </table>
+  </td>
+  <td valign="top">
+    <h3>T2</h3>
+    <table>
+    {% for skill in char.t2_ships %}
+    <tr>
+      <td>{{ skill.name }}</td>
+      <td width="10" class="l{{ skill.level }}">{{ skill.level }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <h3>Guns</h3>
+    <table>
+    {% for skill in char.guns %}
+    <tr>
+      <td>{{ skill.name }}</td>
+      <td width="10" class="l{{ skill.level }}">{{ skill.level }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <h3>Missiles</h3>
+    <table>
+    {% for skill in char.missiles %}
+    <tr>
+      <td>{{ skill.name }}</td>
+      <td width="10" class="l{{ skill.level }}">{{ skill.level }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+  </td>
+  <td valign="top">
+    <h3>T3</h3>
+    <table>
+    {% for skill in char.t3_ships %}
+    <tr>
+      <td>{{ skill.name }}</td>
+      <td width="10" class="l{{ skill.level }}">{{ skill.level }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+  </td>
+  <td valign="top">
+    <h3>Capitals</h3>
+    <p>
+    <h4>Support</h4>
+    <table>
+    {% for skill in char.cap_support %}
+    <tr>
+      <td>{{ skill.name }}</td>
+      <td width="10" class="l{{ skill.level }}">{{ skill.level }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <h4>Drugs</h4>
+    <table>
+    {% for skill in char.drugs %}
+    <tr>
+      <td>{{ skill.name }}</td>
+      <td width="10" class="l{{ skill.level }}">{{ skill.level }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <h4>Carriers</h4>
+    <table>
+    {% for skill in char.carriers %}
+    <tr>
+      <td>{{ skill.name }}</td>
+      <td width="10" class="l{{ skill.level }}">{{ skill.level }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <h4>Dreads</h4>
+    <table>
+    {% for skill in char.dreads %}
+    <tr>
+      <td>{{ skill.name }}</td>
+      <td width="10" class="l{{ skill.level }}">{{ skill.level }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    </p>
+  </td>
+  <td valign="top">
+    <h3>Scanning</h3>
+    <table>
+    {% for skill in char.scanning %}
+    <tr>
+      <td>{{ skill.name }}</td>
+      <td width="10" class="l{{ skill.level }}">{{ skill.level }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <h3>Leadership</h3>
+    <table>
+    {% for skill in char.leadership %}
+    <tr>
+      <td>{{ skill.name }}</td>
+      <td width="10" class="l{{ skill.level }}">{{ skill.level }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <h3>Leadership Implants</h3>
+    <table>
+    <tr>
+      <td>Armored Warfare Mindlink</td>
+      <td width="10" class="l{% if char.armored_warfare_mindlink %}5{% else %}1{% endif %}">{% if char.armored_warfare_mindlink %}&#x2713;{% else %}&#x2717;{% endif %}</td>
+    </tr>
+    <tr>
+      <td>Information Warfare Mindlink</td>
+      <td width="10" class="l{% if char.information_warfare_mindlink %}5{% else %}1{% endif %}">{% if char.information_warfare_mindlink %}&#x2713;{% else %}&#x2717;{% endif %}</td>
+    </tr>
+    <tr>
+      <td>Siege Warfare Mindlink</td>
+      <td width="10" class="l{% if char.siege_warfare_mindlink %}5{% else %}1{% endif %}">{% if char.siege_warfare_mindlink %}&#x2713;{% else %}&#x2717;{% endif %}</td>
+    </tr>
+    <tr>
+      <td>Skirmish Warfare Mindlink</td>
+      <td width="10" class="l{% if char.skirmish_warfare_mindlink %}5{% else %}1{% endif %}">{% if char.skirmish_warfare_mindlink %}&#x2713;{% else %}&#x2717;{% endif %}</td>
+    </tr>
+    </table>
+  </td>
+  <td valign="top">
+  </td>
+</tr>
+</table>
+{% endblock %}

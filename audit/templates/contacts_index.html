@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Contacts{% endblock %}
+{% block content %}
+<p><h2>Contacts</h2></p>
+<p><h3>{{ char.name }}</h3></p>
+<p><strong>{{ char.contacts|length }}</strong> personal contacts</p>
+<table>
+<thead>
+<tr>
+  <th>Name</th>
+  <th>Standing</th>
+  <th>Watchlist</th>
+</tr>
+</thead>
+{% for c in char.contacts %}
+<tbody>
+<tr>
+  <td>{{ c.name }}</td>
+  <td>{{ c.standing }}</td>
+  <td>{% if c.in_watchlist %}&#x2713;{% else %}&#x2717;{% endif %}</td>
+</tr>
+</tbody>
+{% endfor %}
+</table>
+{% endblock %}

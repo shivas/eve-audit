@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Audit - {% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=0.65,maximum-scale=0.65" />
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+    <link rel="shortcut icon" href="/static/images/favicon.ico" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.validate.js"></script>
+    <link href="/static/css/jquery.autocomplete.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<div class="wrapper">
+    <div id="header">
+        <h1>Audit</h1>
+        <ul id="nav_links">
+                <li><a href="{{ url_for('character_index') }}">Character Sheet</a></li>
+                <li><a href="{{ url_for('contacts_index') }}">Contacts</a></li>
+                <li><a href="{{ url_for('mail_index') }}">Mail</a></li>
+                <li><a href="{{ url_for('assets_index') }}">Assets</a></li>
+                <li><a href="{{ url_for('wallet_index') }}">Wallet</a></li>
+                <li><a href="{{ url_for('market_index') }}">Market</a></li>
+                <li><a href="{{ url_for('contracts_index') }}">Contracts</a></li>
+         </ul>
+    </div>
+
+    <div id="content" class="clearfix">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="push"></div>
+</div>
+
+<div id="footer">
+    <div class="copyright">
+    </div>
+</div>
+</body>
+</html>
