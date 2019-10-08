@@ -25,7 +25,7 @@ setup(name='audit',
           'Jinja2==2.6',
           'Flask_WTF==0.8',
           'WTForms==1.0.2',
-          'requests==0.14.2',
+          'requests==2.20.0',
       ],
       classifiers=[
           'Development Status :: 2 - Pre-Alpha',
