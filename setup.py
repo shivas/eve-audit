@@ -21,7 +21,7 @@ setup(name='audit',
       packages=['audit'],
       install_requires=[
           'EVELink==0.2.0',
-          'Flask==0.9',
+          'Flask==1.0',
           'Jinja2==2.6',
           'Flask_WTF==0.8',
           'WTForms==1.0.2',
