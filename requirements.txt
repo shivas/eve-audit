@@ -1,5 +1,5 @@
 EVELink==0.2.0
-Flask==0.9
+Flask==1.0
 Flask-WTF==0.8
 Jinja2==2.6
 WTForms==1.0.2
